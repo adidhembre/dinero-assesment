@@ -1,0 +1,25 @@
+body {
+	color: #fff;
+	background: #19aa8d;
+	font-family: 'Roboto', sans-serif;
+}
+.form-control {
+	font-size: 15px;
+}
+.form-control, .form-control:focus, .input-group-text {
+	border-color: #e1e1e1;
+}
+.form-control, .btn {        
+	border-radius: 3px;
+}
+#logout{
+	position: fixed;
+	cursor: pointer;
+	bottom:10px;
+	right:10px;
+	width:60px;
+	height:25px;
+	border-radius: 10px;
+	background-color: #ed9384;
+	color: #922512;
+}

@@ -1,0 +1,44 @@
+<?php
+
+use App\config\database;
+include __DIR__.'/config/database.php';
+
+$arg = $argv[1];
+
+function makeMigrations($file){
+    include __DIR__."/database/$file.php";
+    echo "running $file...";
+
+    $conn = new mysqli(database::$CREDENTIALS['servername'], database::$CREDENTIALS['username'], database::$CREDENTIALS['password']);
+
+    $conn->query('use '.database::$CREDENTIALS['database'].';');
+
+    foreach($MIGRATION as $sql){
+        // echo $sql;
+        $conn->query($sql);
+    }
+
+    echo "$file completed...";
+}
+
+if($arg == 'migrate'){
+    makeMigrations('migrations');
+}
+else if($arg == 'fake'){
+    makeMigrations('faker');
+}
+else if($arg == 'clean'){
+    echo "cleaning database...";
+
+    $conn = new mysqli(database::$CREDENTIALS['servername'], database::$CREDENTIALS['username'], database::$CREDENTIALS['password']);
+
+    $conn->query('drop database '.database::$CREDENTIALS['database'].';');
+    $conn->query('create database '.database::$CREDENTIALS['database'].';');
+
+    makeMigrations('migrations');
+}
+else{
+    echo "'{$arg}' command is unknown to manager";
+}
+
+

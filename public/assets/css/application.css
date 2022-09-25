@@ -1,0 +1,23 @@
+#application {
+	background-color: white;
+	width: 80%;
+	margin: 50px auto;	
+	padding: 50px;	
+}
+
+#applicationForm {
+	color: black;
+}
+
+#applicationForm .label-below label {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+#applicationForm .row, .as-row {
+	padding: 10px 0px;
+}
+
+#applicationForm imp {
+	color: red;
+}
